@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 // Configure environment variables
 // This line loads the variables from my .env file
 dotenv.config();
@@ -26,6 +27,9 @@ app.get("/", (req, res) => {
 
 // Use the product routes
 app.use("/api/products", productRoutes);
+
+// Use the user routes
+app.use("/api/users", userRoutes);
 
 // Start the server
 app.listen(PORT, () => {
