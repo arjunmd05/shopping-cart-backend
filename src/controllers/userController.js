@@ -68,4 +68,52 @@ const loginUser = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser };
+// Get user profile
+// GET /api/users/profile
+// Private
+const getUserProfile = async (req, res) => {
+  // We have access to req.user because the 'protect' middleware ran first
+  const user = req.user;
+
+  if (user) {
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+    });
+  } else {
+    res.status(404).json({ message: "User not found" });
+  }
+};
+
+// Update user profile
+// PUT /api/users/profile
+// Private
+const updateUserProfile = async (req, res) => {
+  const user = req.user;
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.phone = req.body.phone || user.phone;
+
+    // If the user is updating their password, we have to re-hash it
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    const updatedUser = await user.save();
+
+    res.status(200).json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      phone: updatedUser.phone,
+    });
+  } else {
+    res.status(404).json({ message: "User not found" });
+  }
+};
+
+export { registerUser, loginUser, getUserProfile, updateUserProfile };
