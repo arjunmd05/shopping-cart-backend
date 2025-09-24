@@ -20,4 +20,5 @@ router
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
 
+//export
 export default router;

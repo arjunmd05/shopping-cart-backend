@@ -13,4 +13,5 @@ router.get("/", getProducts);
 // POST /api/products
 router.post("/", createProduct);
 
+//export
 export default router;

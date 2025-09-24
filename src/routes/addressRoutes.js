@@ -12,4 +12,5 @@ import { protect } from "../middleware/authMiddleware.js";
 router.route("/").post(protect, addAddress).get(protect, getAddresses);
 router.route("/:id").put(protect, updateAddress).delete(protect, deleteAddress);
 
+//export
 export default router;

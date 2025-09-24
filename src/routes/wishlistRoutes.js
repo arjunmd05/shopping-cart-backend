@@ -11,4 +11,5 @@ import { protect } from "../middleware/authMiddleware.js";
 router.route("/").get(protect, getWishlist).post(protect, addProductToWishlist);
 router.route("/:productId").delete(protect, removeProductFromWishlist);
 
+//export
 export default router;

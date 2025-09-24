@@ -83,4 +83,5 @@ const removeProductFromWishlist = async (req, res) => {
   }
 };
 
+//export
 export { getWishlist, addProductToWishlist, removeProductFromWishlist };

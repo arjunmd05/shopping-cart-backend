@@ -116,4 +116,5 @@ const updateUserProfile = async (req, res) => {
   }
 };
 
+//export
 export { registerUser, loginUser, getUserProfile, updateUserProfile };
