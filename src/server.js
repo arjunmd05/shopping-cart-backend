@@ -73,6 +73,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Start the server
+// Final commit for integration
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
